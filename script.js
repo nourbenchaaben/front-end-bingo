@@ -18,7 +18,7 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     console.log([...formData.entries()]);
 
     // Example AJAX request to send the form data to the server
-    fetch('https://bingo-game-production.up.railway.app/submit-form', {
+    fetch('https://backend-bingo.onrender.com', {
       method: 'POST',
       body: formData
   })
