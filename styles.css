@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.form-container {
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-container h2 {
+    color: #36a0da; /* Header color */
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-container textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.form-container button {
+    background-color: rgb(37, 150, 190); /* Button color */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+    align-self: center;
+}
+
+.form-container button:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+    transform: scale(1.05);
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.header-text {
+    text-align: left;
+}
+
+h1 {
+    color: #36a0da; /* Header color */
+    margin: 0;
+    font-size: 26px;
+}
+
+/* Join Button */
+.join-button {
+    background-color: #ef5426; /* Join button color */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+    align-self: center;
+}
+
+.join-button:hover {
+    background-color: #d03e1a; /* Darker shade for hover */
+    transform: scale(1.05);
+}
+
+/* Bingo Card */
+.bingo-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Increase padding */
+    display: inline-block;
+    text-align: center;
+    width: 100%; /* Full width for better view */
+    max-width: 600px; /* Maximum width */
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.cell {
+    width: 120px; /* Increased cell width */
+    height: 120px; /* Increased cell height */
+    background-color: #ddd;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px; /* Increased font size */
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.cell:hover {
+    background-color: #ccc;
+    transform: scale(1.05);
+}
+
+/* Revealed state */
+.cell.revealed {
+    background-color: #c1c1c1;
+    transform: scale(1.1);
+}
+
+.cell::before {
+    content: attr(data-task);
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-align: center;
+}
+
+.cell.revealed::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cell.correct {
+    background-color: #7fb941; /* Correct color */
+    color: #ffffff;
+}
+
+.cell.incorrect {
+    background-color: #f44336; /* Incorrect color */
+    color: #ffffff;
+}
+
+/* Task Colors */
+.red {
+    background-color: #ef5426; /* Task red color */
+    color: #ffffff;
+}
+
+.green {
+    background-color: #7fb941; /* Task green color */
+    color: #ffffff;
+}
+
+/*Timer*/
+.timer-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.timer-container h3 {
+    color: #36a0da; /* Timer color */
+    font-size: 20px;
+}
+/*footer*/
+
+.footer {
+    background-color: #f4f4f4; /* Light background color */
+    padding: 20px; /* Padding for spacing */
+    text-align: center; /* Center the text */
+    border-top: 1px solid #ddd; /* Light border on top */
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adjust spacing between icons */
+    margin-bottom: 10px; /* Spacing below the social links */
+}
+
+.footer-social a {
+    color: #36a0da; /* Icon color */
+    text-decoration: none;
+    font-size: 24px; /* Size of the icons */
+}
+
+.footer-social a:hover {
+    color: #ef5426; /* Change color on hover */
+}
+
+.footer p {
+    color: #333; /* Text color for the copyright */
+    margin: 0; /* Remove margin */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr); /* Keep 4 columns on mobile */
+    }
+
+    .cell {
+        height: 100px; /* Increase height for larger interaction area */
+        font-size: 18px; /* Larger font size for mobile */
+        width: 100%; /* Full width for cells */
+    }
+
+    .bingo-card {
+        padding: 15px; /* Less padding on mobile */
+    }
+
+    /* Timer */
+    #timer {
+        font-size: 24px; /* Larger font size for timer */
+        text-align: center; /* Center the timer */
+    }
+}

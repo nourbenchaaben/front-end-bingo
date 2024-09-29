@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Form with File Upload</title>
+    
+</head>
+<body>
+    <header class="header">
+        <img src="imc.png" alt="IMC Logo" class="logo">
+        <div class="header-text">
+            <h1>IMC Bingo</h1>
+            <button class="join-button" onclick="window.open('https://nourarmy.github.io/website-imc', '_blank')">Join Us</button>
+
+
+
+        </div>
+    </header>
+    <div class="bingo-card">
+        <h2>Complete Tasks to Win!</h2>
+        <div class="grid">
+            <!-- Bingo grid cells -->
+            <div class="cell red" data-task="Task 1"></div>
+            <div class="cell green " data-task="Task 2"></div>
+            <div class="cell " data-task="Task 3"></div>
+            <div class="cell" data-task="Task 4"></div>
+            <div class="cell" data-task="Task 5"></div>
+            <div class="cell" data-task="Task 6"></div>
+            <div class="cell" data-task="Task 7"></div>
+            <div class="cell" data-task="Task 8"></div>
+            <div class="cell" data-task="Task 9"></div>
+            <div class="cell" data-task="Task 10"></div>
+            <div class="cell" data-task="Task 11"></div>
+            <div class="cell" data-task="Task 12"></div>
+            <div class="cell" data-task="Task 13"></div>
+            <div class="cell" data-task="Task 14"></div>
+            <div class="cell" data-task="Task 15"></div>
+            <div class="cell" data-task="Task 16"></div>
+        </div>
+    </div>
+    <div class="form-container">
+    <h2>Submit Your Task</h2>
+    <form id="uploadForm">
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+        
+        <!-- Accept both images and videos -->
+        <input type="file" id="media" name="media" accept="image/*,video/*" required>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+</div>
+
+    
+ <!-- Feedback Section (Optional) -->
+ <!-- Feedback Section -->
+<div class="feedback-section" id="feedback" style="display: none;">
+    <h3>Feedback</h3>
+    <p id="feedback-message"></p>
+</div>
+
+
+<!-- Timer Section -->
+
+<div class="timer-container">
+    <h3>Time Left: <span id="timer">60</span> seconds</h3>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-social">
+        <a href="https://www.google.com/maps/place/Manouba+University" target="_blank" aria-label="Location">
+            <i class="fas fa-map-marker-alt"></i>
+        </a> 
+        <a href="mailto:hi.imc2011@gmail.com" target="_blank" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a> 
+        <a href="https://www.facebook.com/IsammMicrosoftClub" target="_blank"  aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a> 
+        <a href="https://www.instagram.com/isamm_microsoft_club/?hl=en"  target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://nourarmy.github.io/website-imc" target="_blank" rel="noopener noreferrer" aria-label="Visit Our Website">
+            <i class="fas fa-globe"></i> <!-- Globe icon for website -->
+        </a>
+    </div>
+    <p>&copy; 2024 ISAMM Microsoft Club. All rights reserved.</p>
+</footer>
+
+
+
+
+
+
+
+</body>
+</html>
