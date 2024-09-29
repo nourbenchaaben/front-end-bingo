@@ -18,10 +18,11 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     console.log([...formData.entries()]);
 
     // Example AJAX request to send the form data to the server
-    fetch('http://localhost:3000/submit-form', {
-        method: 'POST',
-        body: formData
-    })
+    fetch('https://bingo-game-production.up.railway.app/submit-form', {
+      method: 'POST',
+      body: formData
+  })
+  
     .then(response => response.json())
     .then(data => {
         alert('Error submitting the form.');
