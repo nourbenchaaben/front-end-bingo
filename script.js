@@ -37,10 +37,11 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     console.log([...formData.entries()]);
 
     // Example AJAX request to send the form data to the server
-    fetch('https://backend-bingo.vercel.app/submit-form', { // Use the local server URL
-        method: 'POST',
-        body: formData
-    })
+    fetch('https://backend-bingo.vercel.app/submit-form', {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors' // This will disable CORS checks
+})
     .then(response => response.json())
     .then(data => {
         if (data.error) {
