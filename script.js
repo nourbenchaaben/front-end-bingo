@@ -40,9 +40,15 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     fetch('https://backend-bingo.vercel.app/submit-form', {
         method: 'POST',
         body: formData,
-        mode: 'no-cors' // This will disable CORS checks
+        mode: 'no-cors' 
+        // Remove the mode: 'no-cors' line
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); // Return the JSON if the response is ok
+    })
     .then(data => {
         if (data.error) {
             alert('Error submitting the form: ' + data.error);
@@ -89,7 +95,3 @@ document.querySelectorAll('.cell').forEach((cell) => {
         }
     });
 });
-
-
-
-
