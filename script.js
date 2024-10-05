@@ -37,11 +37,10 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     console.log([...formData.entries()]);
 
     // Example AJAX request to send the form data to the server
-    fetch('http://localhost:3000/submit-form', {
+    fetch('https://backend-bingo.vercel.app/submit-form', {
         method: 'POST',
         body: formData,
         mode: 'no-cors' // This will disable CORS checks
-
     })
     .then(response => response.json())
     .then(data => {
@@ -91,18 +90,6 @@ document.querySelectorAll('.cell').forEach((cell) => {
     });
 });
 
-let timeLeft = 60 * 60; // Set the timer duration to 50 minutes in seconds
-const timerElement = document.getElementById('timer'); // Ensure you have an element with this ID in your HTML
 
-const countdown = setInterval(() => {
-    if (timeLeft <= 0) {
-        clearInterval(countdown);
-        alert("Time's up!"); // Notify when time is up
-    } else {
-        const minutes = Math.floor(timeLeft / 60); // Calculate remaining minutes
-        const seconds = timeLeft % 60; // Calculate remaining seconds
-        timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // Format time
-        timeLeft--;
-    }
-}, 1000);
+
 
