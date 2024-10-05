@@ -40,7 +40,7 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     fetch('https://backend-bingo.vercel.app/submit-form', {
     method: 'POST',
     body: formData,
-    mode: 'no-cors' // This will disable CORS checks
+    mode: 'no-cors' 
 })
     .then(response => response.json())
     .then(data => {
