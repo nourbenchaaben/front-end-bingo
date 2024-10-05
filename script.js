@@ -37,7 +37,7 @@ document.getElementById('uploadForm').addEventListener('submit', function (event
     console.log([...formData.entries()]);
 
     // Example AJAX request to send the form data to the server
-    fetch('http://localhost:3002/submit-form', { // Use the local server URL
+    fetch('https://backend-bingo.vercel.app/submit-form', { // Use the local server URL
         method: 'POST',
         body: formData
     })
