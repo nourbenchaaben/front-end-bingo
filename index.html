@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>Form with File Upload</title>
-    
+    <style>
+        /* Initial state: hide task content */
+        .task-content {
+            display: none;
+        }
+        /* Active state: show task content */
+        .task-card.active .task-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -23,95 +32,136 @@
         </div>
     </header>
     <div class="bingo-card">
-    <h2>Complete Tasks to Win!</h2>
-    <div class="grid">
-        <div class="cell red" data-task="1">
-            <strong>Question Task:</strong> Which SDG aims to take urgent action to combat climate change and its impacts?
-        </div>
-        <div class="cell green" data-task="2">
-            <strong>Code Result Task:</strong> For SDG 6 (Clean Water and Sanitation), a household uses 250 liters of water per day. If a new water-efficient system reduces usage by 40 liters per day, how much water will be saved in 30 days? <br>
-            <code>
-            old_usage = 250<br>
-            new_usage = old_usage - 40<br>
-            days = 30<br>
-            water_saved = (old_usage - new_usage) * days<br>
-            print(water_saved)<br>
-            </code>
-            <em>-> What is the total water saved after 30 days?</em>
-        </div>
-        <div class="cell" data-task="3">
-            <strong>Blind Phrase Task:</strong> Braille Sentence: “Equality for everyone.”
-        </div>
-        <div class="cell" data-task="4">
-            <strong>Picture Task:</strong> Insert a picture representing SDG 13.
-        </div>
+        <h2>Complete Tasks to Win!</h2>
+        <div class="grid">
+            <!-- First Row -->
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 1: Which SDG focuses on sustainable cities and communities?">
+                <h3 class="task-title">Task 1</h3>
+                <div class="task-content p-2">
+                    <p>Task 1: Which SDG focuses on sustainable cities and communities?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 2: Write a code to calculate the total carbon offset by planting trees. Each tree offsets 20 kg of CO2 per year, and you plant 15 trees every year. How much CO2 will be offset in 5 years?">
+                <h3 class="task-title">Task 2</h3>
+                <div class="task-content p-2">
+                    <p>Task 2: Write a code to calculate the total carbon offset <br>by planting trees. Each tree offsets 20 kg of CO2 per year,<br> and you plant 15 trees every year. How much CO2 will be offset in 5 years?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 3: What is the translation for ⠑⠟⠥⠁⠇⠊⠞⠽ ⠋⠕⠗ ⠑?">
+                <h3 class="task-title">Task 3</h3>
+                <div class="task-content p-2">
+                    <p>Task 3: What is the translation for ⠑⠟⠥⠁⠇⠊⠞⠽ ⠋⠕⠗ ⠑?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 4: Insert a picture representing SDG 13.">
+                <h3 class="task-title">Task 4</h3>
+                <div class="task-content p-2">
+                    <p> Task 4: Insert a picture representing SDG 13.</p>
+                </div>
+            </div>
 
-        <div class="cell" data-task="5">
-            <strong>Question Task:</strong> SDG focuses on sustainable cities and communities?
-        </div>
-        <div class="cell green" data-task="6">
-            <strong>Code Result Task:</strong> For SDG 2 (Zero Hunger), you are calculating food distribution. If each food package feeds 4 people and you distribute 100 packages per day, how many people will be fed in 12 days? <br>
-            <code>
-            people_per_package = 4<br>
-            packages_per_day = 100<br>
-            days = 12<br>
-            total_people_fed = people_per_package * packages_per_day * days<br>
-            print(total_people_fed)<br>
-            </code>
-            <em>-> What is the total number of people fed after 12 days?</em>
-        </div>
-        <div class="cell" data-task="7">
-            <strong>Blind Phrase Task:</strong> Braille Sentence: “We build safe cities.”
-        </div>
-        <div class="cell" data-task="8">
-            <strong>Picture Task:</strong> Insert a picture representing SDG 11.
-        </div>
+            <!-- Second Row -->
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 1: Write a code to calculate food distribution. If each food package feeds 4 people and you distribute 100 packages per day, how many people will be fed in 12 days?">
+                <h3 class="task-title">Task 1</h3>
+                <div class="task-content p-2">
+                    <p> Task 1: Write a code to calculate food distribution.<br> If each food package feeds 4 people and you distribute 100 packages per day,<br> how many people will be fed in 12 days?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 2: What is the translation for ⠲⠑⠙⠝⠗⠕⠙⠁⠇⠊⠞⠞⠗⠏⠕⠏⠐⠍⠊⠝⠏⠑⠗ ⠊⠜⠁⠝ ⠤⠑?">
+                <h3 class="task-title">Task 2</h3>
+                <div class="task-content p-2">
+                    <p> Task 2: What is the translation for ⠲⠑⠙⠝⠗⠕⠙⠁⠇⠊⠞⠞⠗⠏⠕⠏⠐⠍⠊⠝⠏⠑⠗ ⠊⠜⠁⠝ ⠤⠑?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 3: Insert a picture representing SDG 11.">
+                <h3 class="task-title">Task 3</h3>
+                <div class="task-content p-2">
+                    <p> Task 3: Insert a picture representing SDG 11.</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 4: Which SDG focuses on gender equality?">
+                <h3 class="task-title">Task 4</h3>
+                <div class="task-content p-2">
+                    <p> Task 4: Which SDG focuses on gender equality?</p>
+                </div>
+            </div>
 
-        <div class="cell" data-task="9">
-            <strong>Question Task:</strong> Which SDG focuses on gender equality?
-        </div>
-        <div class="cell green" data-task="10">
-            <strong>Code Result Task:</strong> For SDG 15 (Life on Land), a conservation project plants 300 trees each year. If each tree absorbs 25 kg of CO2 per year, how much CO2 will be absorbed by the trees planted over 5 years? <br>
-            <code>
-            trees_per_year = 300<br>
-            co2_per_tree = 25<br>
-            years = 5<br>
-            total_trees = trees_per_year * years<br>
-            total_co2_absorbed = total_trees * co2_per_tree<br>
-            print(total_co2_absorbed)<br>
-            </code>
-            <em>-> What is the total CO2 absorbed by the trees over 5 years?</em>
-        </div>
-        <div class="cell" data-task="11">
-            <strong>Blind Phrase Task:</strong> Braille Sentence: “Education is for all.”
-        </div>
-        <div class="cell" data-task="12">
-            <strong>Picture Task:</strong> Insert a picture representing SDG 5.
-        </div>
+            <!-- Third Row -->
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 1: What is the translation for ⠑⠙⠥⠝⠊⠝⠁⠞⠊⠕⠝ ⠊⠝ ⠋⠕⠗ ⠁⠇⠇?">
+                <h3 class="task-title">Task 1</h3>
+                <div class="task-content p-2">
+                    <p>Task 1:  What is the translation for ⠑⠙⠥⠝⠊⠝⠁⠞⠊⠕⠝ ⠊⠝ ⠋⠕⠗ ⠁⠇⠇?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 2: Insert a picture representing SDG 5.">
+                <h3 class="task-title">Task 2</h3>
+                <div class="task-content p-2">
+                    <p> Task 2: Insert a picture representing SDG 5.</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 3: A household uses 250 liters of water per day. If a new water-efficient system reduces usage by 40 liters per day, write a code to calculate how much water will be saved in 30 days?">
+                <h3 class="task-title">Task 3</h3>
+                <div class="task-content p-2">
+                    <p> Task 3: A household uses 250 liters of water per day. <br>If a new water-efficient system reduces usage by 40 liters per day, <br>write a code to calculate how much water will be saved in 30 days?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 4: Which SDG focuses on clean water and sanitation?">
+                <h3 class="task-title">Task 4</h3>
+                <div class="task-content p-2">
+                    <p> Task 4: Which SDG focuses on clean water and sanitation?</p>
+                </div>
+            </div>
 
-        <div class="cell" data-task="13">
-            <strong>Question Task:</strong> Which SDG focuses on clean water and sanitation?
-        </div>
-        <div class="cell green" data-task="14">
-            <strong>Code Result Task:</strong> For SDG 13 (Climate Action), calculate the total carbon offset by planting trees. Each tree offsets 20 kg of CO2 per year, and you plant 15 trees every year. <br>
-            <code>
-            trees_per_year = 15<br>
-            co2_per_tree = 20<br>
-            years = 5<br>
-            total_co2 = trees_per_year * co2_per_tree * years<br>
-            print(total_co2)<br>
-            </code>
-            <em>-> What is the total CO2 offset after 5 years?</em>
-        </div>
-        <div class="cell" data-task="15">
-            <strong>Blind Phrase Task:</strong> Braille Sentence: “Health is important.”
-        </div>
-        <div class="cell" data-task="16">
-            <strong>Picture Task:</strong> Insert a picture representing SDG 6.
+            <!-- Fourth Row -->
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 1: Insert a picture representing SDG 6.">
+                <h3 class="task-title">Task 1</h3>
+                <div class="task-content p-2">
+                    <p> Task 1: Insert a picture representing SDG 6.</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 2: Which SDG focuses on life on land?">
+                <h3 class="task-title">Task 2</h3>
+                <div class="task-content p-2">
+                    <p> Task 2: Which SDG focuses on life on land?</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 3: Write a code that identifies the number of days between the date of an event and today.">
+                <h3 class="task-title">Task 3</h3>
+                <div class="task-content p-2">
+                    <p> Task 3: Write a code that identifies the number of days between the date of an event and today.</p>
+                </div>
+            </div>
+            <div class="cell task-card" onclick="toggleTask(this)" data-task="Task 4: What is the translation for ⠑⠙⠥⠝⠊⠝⠁⠞⠊⠕⠝ ⠊⠝ ⠋⠕⠗ ⠍⠊⠝⠁⠍?">
+                <h3 class="task-title">Task 4</h3>
+                <div class="task-content p-2">
+                    <p> Task 4: What is the translation for ⠑⠙⠥⠝⠊⠝⠁⠞⠊⠕⠝ ⠊⠝ ⠋⠕⠗ ⠍⠊⠝⠁⠍?</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+    <script>
+        // Select all cells
+const cells = document.querySelectorAll('.cell');
+
+// Add click event listener to each cell
+cells.forEach(cell => {
+    cell.addEventListener('click', () => {
+        // Toggle the 'expanded' class
+        cell.classList.toggle('expanded');
+        
+        // Optionally, you can reset all other cells to not be expanded
+        cells.forEach(otherCell => {
+            if (otherCell !== cell) {
+                otherCell.classList.remove('expanded');
+            }
+        });
+    });
+});
+
+        
+    </script>
+    
     <div class="form-container">
     <h2>Submit Your Task</h2>
     <form id="uploadForm">
@@ -168,6 +218,10 @@
 
 
 
-
+<script>// Function to toggle the task content and size
+    function toggleTask(taskCard) {
+        taskCard.classList.toggle('active');
+    }
+    </script>
 </body>
 </html>
