@@ -110,16 +110,17 @@ h1 {
     transform: scale(1.05);
 }
 
+
 /* Bingo Card */
 .bingo-card {
-    background-color: #ffffff;
+    background-color: #fffdfd;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px; /* Increase padding */
+    padding: 40px; /* Increased padding */
     display: inline-block;
     text-align: center;
     width: 100%; /* Full width for better view */
-    max-width: 600px; /* Maximum width */
+    max-width: 800px; /* Maximum width */
 }
 
 /* Grid Layout */
@@ -129,47 +130,85 @@ h1 {
     gap: 12px;
 }
 
+/* Cell styles */
 .cell {
-    width: 120px; /* Increased cell width */
-    height: 120px; /* Increased cell height */
-    background-color: #ddd;
-    border-radius: 6px;
+    width: 120px; /* Set desired width */
+    height: 120px; /* Set desired height */
+    background-color: #ddd; /* Background color */
+    border-radius: 6px; /* Rounded corners */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     cursor: pointer;
-    font-size: 18px; /* Increased font size */
-    font-weight: bold;
-    color: #333;
-    position: relative;
-    transition: background-color 0.3s, transform 0.2s;
+    position: relative; /* Position for absolute positioning of ::before */
+    transition: background-color 0.3s, transform 0.2s; /* Transition for background and transform */
+    overflow: hidden; /* Hide overflow */
+    text-align: center; /* Center text in cell */
+    font-size: 0px;
+    
 }
+.cell p {
+    font-size: 10px;                /* Smaller font size */
+    font-weight: bold;              /* Make the text bold */
+    text-align: center;             /* Center align the text */
+    color: #333;                    /* Text color */
+    margin: 10px auto;              /* Add margin for spacing, centered horizontally */
+    white-space: normal;            /* Allow text to wrap onto new lines */
+    word-wrap: break-word;          /* Break long words to the next line if necessary */
+    word-break: break-word;         /* Ensure words break to fit the width */
+    line-height: 1.2;               /* Set line height for better readability */
+    width: 80%;                     /* Control the width of the paragraph */
+    overflow-wrap: break-word;      /* Allow text to wrap inside the container */
+}
+
+.task-title{
+    font-size: 20px; /* Adjust this size as needed */
+    font-weight: bold; /* Bold text */
+}
+
 
 /* Hover effect */
 .cell:hover {
-    background-color: #ccc;
+    background-color: #b7b7b7;
     transform: scale(1.05);
 }
 
 /* Revealed state */
 .cell.revealed {
-    background-color: #c1c1c1;
+    background-color: #a2a2a2;
     transform: scale(1.1);
 }
 
+/* Expanded state */
+.cell.expanded {
+    transform: scale(4); /* Expand to full width/height from center */
+    z-index: 1; /* Bring the expanded cell above others */
+}
+
+/* Pseudo-element for task display */
 .cell::before {
-    content: attr(data-task);
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    text-align: center;
+    content: attr(data-task);           /* Get content from data-task attribute */
+    position: absolute;                 /* Position it absolutely within the cell */
+    opacity: 0;                         /* Initially hidden */
+    visibility: hidden;                 /* Initially hidden */
+    transition: opacity 0.3s, visibility 0.3s; /* Smooth transition for visibility */
+    top: 50%;                           /* Center vertically */
+    left: 50%;                          /* Center horizontally */
+    transform: translate(-50%, -50%);   /* Center the text */
+    font-size: 0px;                    /* Make text larger */
+    color: #333;                        /* Text color */
+    text-align: center;                 /* Center text horizontally */
+    white-space: normal;                /* Allow text to wrap */
+    overflow: hidden;                   /* Hide overflow */
+    z-index: 1;                         /* Make sure text appears above other content */
+    padding: 10px;                      /* Optional padding for better readability */
 }
 
 .cell.revealed::before {
-    opacity: 1;
-    visibility: visible;
+    opacity: 1;                         /* Make text visible */
+    visibility: visible;                /* Make text visible */
 }
+
 
 .cell.correct {
     background-color: #7fb941; /* Correct color */
@@ -180,6 +219,67 @@ h1 {
     background-color: #f44336; /* Incorrect color */
     color: #ffffff;
 }
+
+/* General styling for the task card */
+.task-card {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+
+
+/* First cell (blue) */
+.cell.expanded:nth-child(4n+1) {
+    background-color: #36a0da;
+}
+
+/* Second cell (green) */
+.cell.expanded:nth-child(4n+2) {
+    background-color: #7fb941;
+}
+
+/* Third cell (yellow) */
+.cell.expanded:nth-child(4n+3) {
+    background-color: #feb612;
+}
+
+/* Fourth cell (red) */
+.cell.expanded:nth-child(4n+4) {
+    background-color: #ef5426;
+}
+/* Expanded state for task card */
+.task-card.active {
+    position: fixed; /* Change to fixed to overlay */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: #c6c5c5; /* Background color for active state */
+    overflow-y: auto; /* Allow scrolling if needed */
+    z-index: 1000; /* Bring it above other elements */
+}
+
+/* Task content hidden by default */
+.cell.revealed .task-title,
+.cell.expanded .task-title {
+    display: none; /* Hide task title */
+}
+
+
+/* Show task content when the task card is active */
+.task-card.active .task-content {
+    display: block;
+}
+
+
 
 /* Task Colors */
 .red {
@@ -192,7 +292,7 @@ h1 {
     color: #ffffff;
 }
 
-/*Timer*/
+/* Timer */
 .timer-container {
     text-align: center;
     margin-bottom: 20px;
@@ -202,8 +302,8 @@ h1 {
     color: #36a0da; /* Timer color */
     font-size: 20px;
 }
-/*footer*/
 
+/* Footer */
 .footer {
     background-color: #f4f4f4; /* Light background color */
     padding: 20px; /* Padding for spacing */
@@ -233,32 +333,40 @@ h1 {
     margin: 0; /* Remove margin */
 }
 
-
 /* Responsive Adjustments */
 @media (max-width: 600px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .cell {
-        width: 60px;
-        height: 60px;
+        width: 80px; /* Reduced width for mobile */
+        height: 80px; /* Reduced height for mobile */
+    }
+    .cell p {
+        font-size: 6px;             /* Reduce font size further for smaller screens */
+        width: 40%;            
+             /* Increase the width to occupy more space on smaller screens */
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .grid {
-        grid-template-columns: repeat(4, 1fr); /* Keep 4 columns on mobile */
+        grid-template-columns: repeat(4, 1fr); /* Keep 2 columns on smaller screens */
+    }
+
+    .bingo-card {
+        padding: 20px; /* Less padding on mobile */
     }
 
     .cell {
         height: 100px; /* Increase height for larger interaction area */
-        font-size: 18px; /* Larger font size for mobile */
+        font-size: 14px; /* Larger font size for mobile */
         width: 100%; /* Full width for cells */
     }
-
-    .bingo-card {
-        padding: 15px; /* Less padding on mobile */
+    .cell p {
+        font-size: 8px;             /* Reduce font size further for smaller screens */
+        width: 90%;                 /* Increase the width to occupy more space on smaller screens */
     }
 
     /* Timer */
@@ -267,3 +375,5 @@ h1 {
         text-align: center; /* Center the timer */
     }
 }
+
+
